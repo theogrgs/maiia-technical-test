@@ -1,4 +1,4 @@
-import { List, Typography } from '@material-ui/core';
+import { Grid, List, Typography } from '@material-ui/core';
 import { Availability } from 'store/types';
 import { useMemo } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
@@ -51,28 +51,39 @@ const AvailabilityField = (props: Props) => {
                 return (
                   <div key={dayOfAvailabilities} className="day">
                     <h2>{dayOfAvailabilities}</h2>
-                    {sortedAvailabilities.map(({ id, startDate, endDate }) => {
-                      const isSelected = value === id;
-                      return (
-                        <button
-                          className={clsx(isSelected && 'selected', 'btn')}
-                          disabled={loading}
-                          key={id}
-                          onClick={() => {
-                            onChange(isSelected ? '' : id);
-                          }}
-                        >
-                          <Typography
-                            color={!isSelected ? 'textPrimary' : 'inherit'}
-                          >
-                            {formatTimeRange({
-                              from: startDate,
-                              to: endDate,
-                            })}
-                          </Typography>
-                        </button>
-                      );
-                    })}
+                    <Grid container spacing={1}>
+                      {sortedAvailabilities.map(
+                        ({ id, startDate, endDate }) => {
+                          const isSelected = value === id;
+                          return (
+                            <Grid item xs={4} key={id}>
+                              <button
+                                className={clsx(
+                                  isSelected && 'selected',
+                                  'btn',
+                                )}
+                                disabled={loading}
+                                key={id}
+                                onClick={() => {
+                                  onChange(isSelected ? '' : id);
+                                }}
+                              >
+                                <Typography
+                                  color={
+                                    !isSelected ? 'textPrimary' : 'inherit'
+                                  }
+                                >
+                                  {formatTimeRange({
+                                    from: startDate,
+                                    to: endDate,
+                                  })}
+                                </Typography>
+                              </button>
+                            </Grid>
+                          );
+                        },
+                      )}
+                    </Grid>
                   </div>
                 );
               },

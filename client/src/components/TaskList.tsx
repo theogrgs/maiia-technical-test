@@ -57,7 +57,7 @@ const TaskList = (props: Props) => {
     <Accordion datacy={name}>
       <AccordionSummary expandIcon={<ExpandMoreIcon />}>
         <h3>
-          <span>{title}{' '}</span>
+          <span>{title} </span>
           <span>
             {numberOfAchievedTasks}/{expected}
           </span>{' '}

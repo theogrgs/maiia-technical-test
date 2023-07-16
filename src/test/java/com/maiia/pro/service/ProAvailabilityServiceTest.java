@@ -1,6 +1,7 @@
 package com.maiia.pro.service;
 
 import com.maiia.pro.EntityFactory;
+import com.maiia.pro.dto.AvailabilityDTO;
 import com.maiia.pro.entity.Availability;
 import com.maiia.pro.entity.Practitioner;
 import com.maiia.pro.repository.AppointmentRepository;
@@ -71,7 +72,7 @@ class ProAvailabilityServiceTest {
 
         proAvailabilityService.generateAvailabilities(practitioner.getId());
 
-        List<Availability> availabilities = proAvailabilityService.findByPractitionerId(practitioner.getId());
+        List<AvailabilityDTO> availabilities = proAvailabilityService.findByPractitionerId(practitioner.getId());
         assertEquals(4, availabilities.size());
     }
 

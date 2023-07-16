@@ -3,10 +3,9 @@ import EditorLink from 'components/EditorLink';
 import Section from 'components/Section';
 import NextLink from 'next/link';
 
-
 const Home = () => {
   return (
-    <div className='home page'>
+    <div className="home page">
       <h1>Maiia's technical test</h1>
       <Section name="intro" title="Introduction">
         <p>
@@ -33,8 +32,9 @@ const Home = () => {
         <p>Here are the features to implement:</p>
         <ul>
           <li>
-            Complete an existing service (ProAvailabilityService.java) to generate availabilities of a practitioner. 
-            Availabilities are calculated when you start the server by the method 
+            Complete an existing service (ProAvailabilityService.java) to
+            generate availabilities of a practitioner. Availabilities are
+            calculated when you start the server by the method
           </li>
           <li>Create appointments.</li>
         </ul>
@@ -62,8 +62,10 @@ const Home = () => {
       </Section>
       <Section name="appointments" title="Appointments">
         <NextLink href="/appointments">
-          <div className='cta'>
-            <p><Link>Let's work on appointments</Link></p>
+          <div className="cta">
+            <p>
+              <Link>Let's work on appointments</Link>
+            </p>
           </div>
         </NextLink>
       </Section>

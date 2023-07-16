@@ -3,6 +3,7 @@ package com.maiia.pro.configuration;
 import com.maiia.pro.entity.Patient;
 import com.maiia.pro.entity.Practitioner;
 import com.maiia.pro.entity.TimeSlot;
+import com.maiia.pro.repository.AvailabilityRepository;
 import com.maiia.pro.repository.PatientRepository;
 import com.maiia.pro.repository.PractitionerRepository;
 import com.maiia.pro.repository.TimeSlotRepository;
@@ -29,6 +30,8 @@ public class CommandLineStartupRunner implements CommandLineRunner {
     private PractitionerRepository practitionerRepository;
     @Autowired
     private TimeSlotRepository timeSlotRepository;
+    @Autowired
+    private AvailabilityRepository availabilityRepository;
 
     @Autowired
     private ProAvailabilityService proAvailabilityService;
@@ -76,5 +79,6 @@ public class CommandLineStartupRunner implements CommandLineRunner {
         log.info("------------------created patients---------------- " + patientRepository.findAll());
         log.info("------------------created practitioners---------------- " + practitionerRepository.findAll());
         log.info("------------------created timeSlots---------------- " + timeSlotRepository.findAll());
+        log.info("------------------created availabilities---------------- " + availabilityRepository.findAll());
     }
 }

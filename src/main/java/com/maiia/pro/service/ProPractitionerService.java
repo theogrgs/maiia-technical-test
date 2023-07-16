@@ -1,22 +1,26 @@
 package com.maiia.pro.service;
 
-import com.maiia.pro.entity.Practitioner;
+import com.maiia.pro.dto.PractitionerDTO;
+import com.maiia.pro.mapper.PractitionerMapper;
 import com.maiia.pro.repository.PractitionerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class ProPractitionerService {
-    @Autowired
-    private PractitionerRepository practitionerRepository;
+    private final PractitionerRepository practitionerRepository;
 
-    public Practitioner find(String practitionerId) {
-        return practitionerRepository.findById(practitionerId).orElseThrow();
+    public ProPractitionerService(PractitionerRepository practitionerRepository) {
+        this.practitionerRepository = practitionerRepository;
     }
 
-    public List<Practitioner> findAll() {
-        return practitionerRepository.findAll();
+    // Maybe delete this function since it is not used. However, I guess it is used in the real code
+    public PractitionerDTO find(Integer practitionerId) {
+        return PractitionerMapper.INSTANCE.toDto(practitionerRepository.findById(practitionerId).orElseThrow());
+    }
+
+    public List<PractitionerDTO> findAll() {
+        return PractitionerMapper.INSTANCE.toDto(practitionerRepository.findAll());
     }
 }
